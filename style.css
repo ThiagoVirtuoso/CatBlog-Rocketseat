@@ -1,0 +1,313 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+  --hue: 195;
+  --color-base-blue-100: hsl(var(--hue), 46%, 40%);
+  --color-base-blue-200: hsl(var(--hue), 91%, 25%);
+  --color-base-white: hsl(var(--hue), 100%, 98%);
+  --color-font-primary: #ffffff;
+  --color-font-secondary: #202024;
+  --color-font-terciary: #121214;
+
+}
+
+html, body, input {
+  font-family: "Mulish", sans-serif;
+}
+
+body {
+  background-color: var(--color-base-white);
+  width: 100%;
+}
+
+header {
+  height: 7.2rem;
+  width: 100%;
+  background-color: var(--color-base-blue-200);
+  padding: 1.2rem 2.8rem;
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 100%;
+  animation: move-down .4s .4s backwards;
+}
+
+header form {
+  flex: 1;
+}
+
+.input-wrapper label {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 4.2rem;
+  background: rgba(255, 255, 255, 0.20);
+  border: none;
+  border-radius: .4rem;
+  color: var(--color-font-primary);
+  padding: 1.2rem 1.4rem;
+}
+
+.input-wrapper input::placeholder{
+  /* opacity: .56; */
+  color: var(--color-font-primary);
+}
+
+.avatar {
+  height: 4.2rem;
+  width: 4.2rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+main .content, aside {
+  padding: 0 2.2rem;
+}
+
+main img.main-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  animation: move-right .4s 1.5s backwards;
+}
+
+#app main .content div h1 {
+  width: 100%;
+  padding-bottom: .8rem;
+  color: var(--color-font-secondary);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.dislike {
+  margin-left: 1.2rem;
+}
+
+button {
+  width: 4.0rem;
+  height: 4.0rem;
+  background-color: var(--color-base-blue-200);
+  border: none;
+  border-radius: 50%;
+  padding: 1.2rem;
+  transition: all 200ms;
+} 
+
+button img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+button.like:hover {
+  animation-name: thumbs-up; 
+  animation-duration: .5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+  scale: 1.5;
+}
+
+button.dislike:hover {
+  animation-name: thumbs-down; 
+  animation-duration: .5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  scale: 1.5;
+}
+
+main .content div {
+  margin: 3.1rem 0;
+}
+
+main p {
+  color: var(--color-font-terciary);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+aside {
+  margin-top: 3.4rem;
+}
+
+aside section {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+aside h1 {
+  color: var(--color-font-secondary);
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.item {
+  height: 8.4rem;
+  display: flex;
+  --delay: .4s;
+  animation: appear .4s var(--delay) backwards;
+  transition: all 200ms;
+}
+
+.item img {
+  width: 15.1rem;
+  height: 8.4rem;
+  object-fit: cover;
+  margin-right: 1.6rem;
+  border-radius: .5rem;
+}
+
+.details {
+  height: 8.4rem;
+  width: 21.5rem;
+}
+
+.details h2 {
+  color: var(--color-font-secondary);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.details p {
+  color: var(--color-font-terciary);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.item:hover {
+  scale: 1.1;
+  background-color: hsla(195, 46%, 40%, 0.192);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 6.4rem;
+  width: 100%;
+  margin-top: 3.9rem;
+  background: var(--color-base-blue-100);
+}
+
+footer p {
+  color: var(--color-font-primary);
+  text-align: center;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (min-width: 1120px) {
+  main .content, aside {
+    padding: 0;
+  }
+
+  #app {
+    display: grid;
+    grid-template-areas: 
+      "header header header header"
+      "main main main sidebar"
+      "footer footer footer footer";
+  }
+
+  header {
+    padding: 1.2rem 11.2rem;
+    grid-area: header;
+  }
+  
+  main {
+    width: 80.0rem;
+    grid-area: main;
+    margin: 4.4rem 3.4rem 0 10.9rem;
+  }
+
+  main img {
+    max-width: 80.3rem;
+    border-radius: .5rem;
+  }
+
+  main .content div h1 {
+    padding: 0;
+  }
+
+  main .content div {
+    display: flex;
+    width: 80.0rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  aside {
+    margin-top: 4.4rem;
+    margin-right: 11.0rem;
+  }
+
+  .details {
+    width: 21.5rem;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes move-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes move-right {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes thumbs-up {
+  to {
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes thumbs-down {
+  to {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes zoom {
+  100% {
+    transform: scale(2);
+  }
+}
